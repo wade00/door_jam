@@ -1,0 +1,13 @@
+development:
+  adapter: postgresql
+  database: development
+  username: <%= ENV['PG_USERNAME'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
+  host: localhost
+
+production:
+  adapter: postgresql
+  database: production
+  username: <%= ENV['PG_USERNAME'] %>
+  password: <%= ENV['PG_PASSWORD'] %>
+  host: door-jam.herokuapp.com
