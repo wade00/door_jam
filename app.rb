@@ -15,6 +15,10 @@ config = {
   outgoing_token: ENV["OUTGOING_TOKEN"]
 }
 
+get "/" do
+  "Hello world! Welcome to the Doorman app. This is the Ruby part of an IoT project that will tell a user if a door is open or closed."
+end
+
 get "/check-door" do
   if params[:token] == config[:outgoing_token]
     door_status = Door.first.status
