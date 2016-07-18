@@ -1,10 +1,12 @@
+require "dotenv"
+
 Dotenv.load
 
 configure :production, :development do
   db = URI.parse(ENV['DATABASE_URL'])
 
   ActiveRecord::Base.establish_connection(
-      :adapter => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+      :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
       :host     => db.host,
       :username => db.user,
       :password => db.password,

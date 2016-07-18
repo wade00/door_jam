@@ -13,7 +13,7 @@ get "/check-door" do
   puts Door.first.status
 end
 
-put "/update-door/:status" do |status|
+get "/update-door/:status" do |status|
   puts "Hitting update..."
   door = Door.first
   if door
