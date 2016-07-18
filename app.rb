@@ -12,8 +12,7 @@ Bundler.require
 Dotenv.load
 
 config = {
-  outgoing_token: ENV["OUTGOING_TOKEN"],
-  slack_team_id:  ENV["SLACK_TEAM_ID"]
+  outgoing_token: ENV["OUTGOING_TOKEN"]
 }
 
 get "/check-door" do
