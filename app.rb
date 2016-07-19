@@ -38,11 +38,13 @@ get "/check-door" do
   end
 end
 
-get "/update-door/:status" do |status|
-  door = Door.first
-  if door
-    door.update_attributes({ status: status })
-  else
-    Door.create!({ status: status })
+put "/update-door" do
+  if params[:status] && ['open', 'closed'].include?(params[:status])
+    door = Door.first
+    if door
+      door.update_attributes({ status: params[:status] })
+    else
+      Door.create!({ status: params[:status] })
+    end
   end
 end
