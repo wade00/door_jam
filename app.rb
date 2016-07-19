@@ -39,7 +39,7 @@ get "/check-door" do
 end
 
 put "/update-door/:status" do |status|
-  if status && ['open', 'closed'].include?(status)
+  if ['open', 'closed'].include?(status)
     door = Door.first
     if door
       door.update_attributes({ status: status })
