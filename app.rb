@@ -34,7 +34,7 @@ get "/check-door" do
             }
 
     response = HTTParty.post(params[:response_url], body: body.to_json)
-    puts response
+    puts "Request sent"
   end
 end
 
