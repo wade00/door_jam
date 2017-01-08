@@ -23,15 +23,12 @@ get "/check-door" do
   if params[:token] == config[:outgoing_token]
     door_status = Door.first.status
     color =  door_status == 'open' ? '37A651' : 'BF4040'
-    body  = { response_type: "ephemeral",
-              text: "Checking the bathroom door...",
-              attachments: [
-                {
-                  color: color,
-                  text: "It's #{Door.first.status}!"
-                }
-              ]
-            }
+    msg = door_status == 'open' ? "It's open!" : 'Occupied!'
+    body = {
+      response_type: "ephemeral",
+      text: "Checking the bathroom door...",
+      attachments: [ { color: color, text: msg } ]
+    }
 
     response = HTTParty.post(params[:response_url], body: body.to_json)
     puts "Request sent"
